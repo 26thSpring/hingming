@@ -1,1 +1,0 @@
-window.onload=()=>{new App,console.log("load")};
