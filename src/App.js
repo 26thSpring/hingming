@@ -30,7 +30,7 @@ export class App {
             height: document.body.clientHeight,
             antialias: true,
             transparent: false,
-            resolution: (window.devicePixelRatio > 1) ? 2 : 1,
+            resolution: 1,
             autoDensity: false,
             powerPreference: "high-performance",
             backgroundColor: 0xffffff,

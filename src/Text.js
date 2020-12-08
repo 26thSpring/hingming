@@ -18,33 +18,13 @@ export class Text {
             const image = new Image(stageWidth, stageHeight); // Using optional size for image
             image.onload = () => {
                 this.ctx.drawImage(image, 0, 0, stageWidth, stageHeight);
-                // this.drawImageActualSize();
-
-                console.log('onload', this.ctx);
                 resolve(this.dotPos(density, stageWidth, stageHeight));
             }; // Draw when image has loaded
 
             image.src = src;
             this.image = image;
-
-            console.log('image', image);
         });
         // return this.dotPos(density, stageWidth, stageHeight);
-    }
-
-    drawImageActualSize() {
-        // Use the intrinsic size of image in CSS pixels for the canvas element
-        this.canvas.width = this.naturalWidth;
-        this.canvas.height = this.naturalHeight;
-
-        // Will draw the image as 300x227, ignoring the custom size of 60x45
-        // given in the constructor
-        // this.ctx.drawImage(this.image, 0, 0);
-
-        // To use the custom size we'll have to specify the scale parameters 
-        // using the element's width and height properties - lets draw one 
-        // on top in the corner:
-        this.ctx.drawImage(this.image, 0, 0, stageWidth, stageHeight);
     }
 
     setText(str, density, stageWidth, stageHeight) {
@@ -109,11 +89,6 @@ export class Text {
                 }
             }
         }
-
-        console.log('imageData', imageData);
-        console.log('dotPos', 3, 696, 978);
-
-        console.log('particles', particles);
 
         return particles;
     }
