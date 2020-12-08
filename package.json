@@ -13,6 +13,7 @@
     "webpack-dev-server": "^3.5.1"
   },
   "scripts": {
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "build": "webpack"
   }
 }
