@@ -16,6 +16,13 @@ export class Visual {
         };
 
         document.addEventListener('pointermove', this.onMove.bind(this), false);
+        document.addEventListener('touchend', () => {
+            this.mouse = {
+                x: 0,
+                y: 0,
+                radius: 100
+            };
+        });
     }
 
     show(stageWidth, stageHeight, stage) {
