@@ -4,9 +4,9 @@ const COLOR_SPEED = 0.12;
 const MOVE_SPEED = 0.88;
 
 export class Particle {
-    constructor(pos, texture) {
+    constructor(pos, texture, scale = 0.06) {
         this.sprite = new PIXI.Sprite(texture);
-        this.sprite.scale.set(0.06);
+        this.sprite.scale.set(scale);
 
         this.savedX = pos.x;
         this.savedY = pos.y;

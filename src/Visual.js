@@ -7,7 +7,12 @@ export class Visual {
 
         this.texture = PIXI.Texture.from('particle.png');
 
+        this.particleScale = 0.06;
+
         this.particles = [];
+
+        this.density = 2;
+
 
         this.mouse = {
             x: 0,
@@ -15,6 +20,16 @@ export class Visual {
             radius: 100
         };
 
+        window.addEventListener('resize', (e) => {
+            if (window.innerWidth > 400) {
+                this.density = 2;
+                this.particleScale = 0.06;
+            }
+            else {
+                this.density = 1;
+                this.particleScale = 0.03;
+            }
+        });
         document.addEventListener('pointermove', this.onMove.bind(this), false);
         document.addEventListener('touchend', () => {
             this.mouse = {
@@ -30,7 +45,7 @@ export class Visual {
             stage.removeChild(this.container);
         }
 
-        this.pos = this.text.setImage('hingming.png', 2, stageWidth, stageHeight).then((res) => {
+        this.pos = this.text.setImage('hingming.png', this.density, stageWidth, stageHeight).then((res) => {
             console.log('show', stageWidth, stageHeight, stage, res);
 
             this.container = new PIXI.ParticleContainer(
@@ -50,7 +65,7 @@ export class Visual {
             this.particles = [];
 
             for (let i = 0; i < res.length; i++) {
-                const item = new Particle(res[i], this.texture);
+                const item = new Particle(res[i], this.texture, this.particleScale);
                 this.container.addChild(item.sprite);
                 this.particles.push(item);
             }
